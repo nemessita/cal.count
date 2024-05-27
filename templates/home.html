@@ -1,0 +1,32 @@
+{% extends "base/layout.html" %}
+
+{% block title %}
+	Virtual page
+{% endblock title %}
+
+{% block content %}
+
+
+
+
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="add_enter" placeholder="Enter text">
+        <input type="number" name="add_number" placeholder="Enter number">
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if result %}
+        <ul>
+            {% for item in result %}
+                <li>{{ item.0 }}: {{ item.1 }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+
+{% endblock %}
